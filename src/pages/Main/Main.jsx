@@ -1,8 +1,7 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {QRCode, CustomInput} from 'components'
 import Button from '@mui/material/Button';
 import { useMain } from './useMain';
-
 
 const Main = () => {
   const {qr, visitante, setVisitante, noCasa, setNoCasa, vehiculo, setVehiculo, vehiculoColor, setVehiculoColor, handleGenerateQr, isBtnEnabled} = useMain()

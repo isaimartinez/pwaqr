@@ -22,7 +22,7 @@ export const useMain = () => {
         const id = uuidv4().substring(0,7)
         let str = id+","+visitante+","+noCasa+","+vehiculo+","+vehiculoColor
         console.log("str", str)
-        setQr(str)
+        setQr(btoa(str))
     }
     
 

@@ -1,15 +1,15 @@
-import React from 'react'
+import React,{useRef, useCallback, useState} from 'react'
+import { toPng, toBlob } from 'html-to-image';
 import QRCode from "react-qr-code";
-import {WhatsappShareButton, WhatsappIcon} from 'react-share'
-const QRCodeComponent = ({value}) => {
+import { FaCopy, FaDownload } from "react-icons/fa";
+import { useQRCode } from './useQRCode';
 
-  const clipboard = () => {
-    navigator.clipboard.writeText(value);
-  }
+const QRCodeComponent = ({value}) => {
+  const {ref, copy, download} = useQRCode(value)
 
   return (
     <div className='flex flex-row gap-5'>
-      <div className='flex w-52 h-52'>
+      <div className='flex w-52 h-52' ref={ref}>
         <QRCode
           size={100}
           style={{ height: "auto", maxWidth: "100%", width: "100%" }}
@@ -17,10 +17,10 @@ const QRCodeComponent = ({value}) => {
           viewBox={`0 0 256 256`}
         />
       </div>
-      <div className='flex justify-center items-center cursor-pointer'
-        onClick={clipboard}
+      <div className='flex flex-col gap-5 justify-center items-center cursor-pointer'
       >
-        Copiar
+        <FaCopy onClick={copy} size={35}/>
+        <FaDownload onClick={download} size={35}/>
       </div>
 
     </div>

@@ -12,8 +12,12 @@ const Main = () => {
       <CustomInput label={"No. Casa"} onChange={setNoCasa} value={noCasa}/>
       <CustomInput label={"Tipo Vehiculo"} onChange={setVehiculo} value={vehiculo}/>
       <CustomInput label={"Color"} onChange={setVehiculoColor} value={vehiculoColor}/>
-      <Button variant="outlined" onClick={handleGenerateQr} disabled={!isBtnEnabled}>Generate Qr</Button>
-      {qr && <QRCode value={qr} />}
+      <div className='flex flex-col mt-5  gap-5'>
+        <div className='flex items-center justify-center'>
+          <Button variant="outlined" onClick={handleGenerateQr} disabled={!isBtnEnabled}>Generate Qr</Button>
+        </div>
+        {qr && <QRCode value={qr} />}
+      </div>
     </div>
   )
 }

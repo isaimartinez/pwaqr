@@ -1,7 +1,7 @@
 import React from 'react'
 import TextField from '@mui/material/TextField';
 
-const CustomInput = ({label, onChange, value}) => {
+const CustomInput = ({label, onChange, value, readOnly,}) => {
   return (
     <div className=''>
         <TextField 
@@ -10,6 +10,9 @@ const CustomInput = ({label, onChange, value}) => {
             onChange={(e) => onChange(e.target.value)} 
             value={value}
             autoComplete='off'
+            InputProps={{
+              readOnly,
+            }}
         />
     </div>
   )

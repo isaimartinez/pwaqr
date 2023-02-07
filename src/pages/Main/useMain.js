@@ -1,7 +1,10 @@
-import React,{useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import {mockLogOut} from '../../APIs'
+import {useNavigate} from 'react-router-dom'
 
 export const useMain = () => {
+  const navigate = useNavigate()
     const [qr, setQr] = useState(null)
     const [visitante, setVisitante] = useState("")
     const [noCasa, setNoCasa] = useState("")
@@ -17,6 +20,13 @@ export const useMain = () => {
             setIsBtnEnabled(true)
         }
     }, [visitante, noCasa, vehiculo, vehiculoColor, autorizo]);
+
+    useEffect(() => {
+      const user = JSON.parse(localStorage.getItem('profile'))
+      console.log("user", user)
+      setAutorizo(user.name)
+    }, [])
+    
 
 
     const handleGenerateQr = () => {
@@ -34,9 +44,13 @@ export const useMain = () => {
       setAutorizo("")
       setQr(null)
     }
+
+    const handleLogOut = () => {
+      mockLogOut(navigate)
+    }
     
 
     return {qr, setQr, visitante, setVisitante, noCasa, setNoCasa, vehiculo, setVehiculo, vehiculoColor, setVehiculoColor, handleGenerateQr, 
-      isBtnEnabled, autorizo, setAutorizo, handleReset
+      isBtnEnabled, autorizo, setAutorizo, handleReset, handleLogOut
     }
 }

@@ -3,10 +3,11 @@ import { toast } from 'react-toastify';
 
 export const mockLogin = (name, pass, navigate) => {
   const user = users.filter(u => u.name == name)[0]
-  console.log("user", user.pass)
+  console.log("user", user)
   console.log("temp pass", pass)
 
-  if(user.pass == pass) {
+
+  if(user?.pass == pass) {
     console.log("p = p")
     localStorage.setItem('profile', JSON.stringify({
       name, pass

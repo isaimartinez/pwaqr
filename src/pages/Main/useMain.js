@@ -41,7 +41,6 @@ export const useMain = () => {
       setNoCasa("")
       setVehiculo("")
       setVehiculoColor("")
-      setAutorizo("")
       setQr(null)
     }
 
